@@ -1,14 +1,16 @@
 package repo
 
 import (
-	"fmt"
+	"errors"
 	"regexp"
+	"strings"
 
 	"github.com/NoUseFreak/sdf/internal/pkg/utils"
 )
 
 type RepoExpander struct {
-	shorts map[string]string
+	shorts     map[string]string
+	transports map[string]map[string]string
 }
 
 func NewRepoExpander() *RepoExpander {
@@ -18,21 +20,42 @@ func NewRepoExpander() *RepoExpander {
 			"g":  "github.com",
 			"bb": "bitbucket.org",
 		},
+		transports: map[string]map[string]string{
+			"github.com": {
+				"git":   "git@github.com:[org]/[name].git",
+				"https": "https://github.com/[org]/[name].git",
+			},
+		},
 	}
 }
 
-func (rs *RepoExpander) Expand(shortRepo string) string {
-	r := regexp.MustCompile("^((?P<short>[a-z]+)/)?(?P<org>[^/]+)/(?P<name>[^/]+)")
-	matches := utils.ReSubMatchMap(r, shortRepo)
+func (rs *RepoExpander) Explode(input string) (string, string, string) {
+	r := regexp.MustCompile("^(([a-z]+]?://|([a-z]+@))?(?P<short>[^/:]+)[/:])?(?P<org>[^/]+)/(?P<name>[^/\\.]+)")
+	matches := utils.ReSubMatchMap(r, input)
 
-	if _, ok := rs.shorts[matches["short"]]; ok {
-		return fmt.Sprintf(
-			"%s/%s/%s",
-			rs.shorts[matches["short"]],
-			matches["org"],
-			matches["name"],
-		)
+	return matches["short"], matches["org"], matches["name"]
+}
+
+func (rs *RepoExpander) ExpandPlatform(input string) string {
+	if plat, ok := rs.shorts[input]; ok {
+		return plat
+	}
+	return input
+}
+
+func (rs *RepoExpander) ExpandTransport(transport string, platfrom string, org string, name string) (string, error) {
+	platformtpls, ok := rs.transports[platfrom]
+	if !ok {
+		return "", errors.New("Unknown platform")
+	}
+	repo, ok := platformtpls[transport]
+	if !ok {
+		return "", errors.New("Transport not known for platform")
 	}
 
-	return shortRepo
+	repo = strings.ReplaceAll(repo, "[plat]", platfrom)
+	repo = strings.ReplaceAll(repo, "[org]", org)
+	repo = strings.ReplaceAll(repo, "[name]", name)
+
+	return repo, nil
 }

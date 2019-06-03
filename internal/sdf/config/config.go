@@ -1,8 +1,10 @@
 package config
 
 import (
-	"github.com/spf13/viper"
 	"os"
+	"runtime"
+
+	"github.com/spf13/viper"
 )
 
 type Config struct {
@@ -33,4 +35,15 @@ func (c *Config) applyInterpolation() {
 		"projectdir",
 		os.ExpandEnv(viper.GetString("projectdir")),
 	)
+}
+
+func userHomeDir() string {
+	if runtime.GOOS == "windows" {
+		home := os.Getenv("HOMEDRIVE") + os.Getenv("HOMEPATH")
+		if home == "" {
+			home = os.Getenv("USERPROFILE")
+		}
+		return home
+	}
+	return os.Getenv("HOME")
 }

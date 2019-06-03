@@ -1,30 +1,41 @@
 package clone
 
 import (
-	"fmt"
-	"github.com/NoUseFreak/sdf/internal/pkg/repo"
-	"github.com/spf13/viper"
-	"gopkg.in/src-d/go-git.v4"
 	"os"
 	"path"
+
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
+	"gopkg.in/src-d/go-git.v4"
+
+	"github.com/NoUseFreak/sdf/internal/pkg/repo"
 )
 
 func CloneRepo(repoInput string) (string, error) {
-	repoExpander := repo.NewRepoExpander()
-	fullRepo := repoExpander.Expand(repoInput)
+	r := repo.NewFromString(repoInput)
+
+	fullRepo := r.URL
+	logrus.Debugf("Expanded %s to %s", repoInput, fullRepo)
 
 	targetDir := path.Join(
 		viper.GetString("projectdir"),
-		fullRepo,
+		r.TargetDir(),
 	)
+	logrus.Debugf("Cloning into %s", targetDir)
 
 	_, err := git.PlainClone(targetDir, false, &git.CloneOptions{
-		URL:      fmt.Sprintf("git://%s", fullRepo),
-		Progress: os.Stderr,
+		URL:        fullRepo,
+		Progress:   os.Stderr,
+		RemoteName: "origin",
 	})
 
 	if err != nil {
-		return "", err
+		switch err {
+		case git.ErrRepositoryAlreadyExists:
+			logrus.Info("Repo already exists")
+		default:
+			return "", err
+		}
 	}
 
 	return targetDir, nil

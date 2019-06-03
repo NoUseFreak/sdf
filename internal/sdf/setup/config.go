@@ -6,8 +6,9 @@ import (
 	"os/user"
 	"path"
 
-	"github.com/NoUseFreak/sdf/internal/pkg/output"
 	"github.com/spf13/viper"
+
+	"github.com/NoUseFreak/sdf/internal/pkg/output"
 )
 
 func CreateHomeDir() string {

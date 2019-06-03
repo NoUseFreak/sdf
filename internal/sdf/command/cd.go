@@ -2,36 +2,40 @@ package command
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
 	"github.com/NoUseFreak/sdf/internal/pkg/navigate"
-	"github.com/NoUseFreak/sdf/internal/sdf/clone"
+	"github.com/NoUseFreak/sdf/internal/sdf/cd"
 )
 
 func init() {
-	rootCmd.AddCommand(cloneCmd)
+	rootCmd.AddCommand(cdCmd)
 }
 
-var cloneCmd = &cobra.Command{
-	Use:   "clone",
-	Short: "Clone a repo in the structured setup",
+var cdCmd = &cobra.Command{
+	Use:   "cd",
+	Short: "cd dir",
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 1 {
-			return fmt.Errorf("Must provide a repo")
+			return fmt.Errorf("Must provide a name")
 		}
 		return nil
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-		repoInput := args[0]
-		targetDir, err := clone.CloneRepo(repoInput)
+		input := strings.Join(args, "")
+		input = strings.ReplaceAll(input, "/", "")
+		targetDir, err := cd.Find(input)
 
 		if err != nil {
 			logrus.Error(err)
 			return
 		}
 
-		navigate.Chdir(targetDir)
+		if targetDir != "" {
+			navigate.Chdir(targetDir)
+		}
 	},
 }
