@@ -24,7 +24,6 @@ func CreateHomeDir() string {
 }
 
 func CreateConfig(homeCfgDir string) {
-	output.Print("%v\n", viper.GetString("profile"))
 	err := viper.WriteConfigAs(path.Join(homeCfgDir, viper.GetString("profile")+".yml"))
 	if err != nil {
 		output.Print("%v\n", err)

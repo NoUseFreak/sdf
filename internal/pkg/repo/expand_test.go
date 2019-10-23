@@ -61,6 +61,13 @@ func TestRepoExpander_Explode(t *testing.T) {
 			want2: "org",
 			want3: "name",
 		},
+		{
+			name:  "git-inc-dot",
+			input: "git@github.com:org/name.some",
+			want1: "github.com",
+			want2: "org",
+			want3: "name.some",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

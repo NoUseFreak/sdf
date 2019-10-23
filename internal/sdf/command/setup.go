@@ -21,6 +21,6 @@ var setupCmd = &cobra.Command{
 		setup.SetupShellFunc()
 
 		output.Print("Completed setting up your %s profile\n", viper.GetString("profile"))
-		
+
 	},
 }

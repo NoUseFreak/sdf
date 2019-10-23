@@ -1,7 +1,6 @@
 package command
 
 import (
-	"fmt"
 	"io"
 	"math/rand"
 	"os"
@@ -19,15 +18,6 @@ var rootCmd = &cobra.Command{
 	Use:   "sdf",
 	Short: "Lazy developer toolbox",
 	Long:  `Doing stuff the easy way`,
-	Run: func(cmd *cobra.Command, args []string) {
-		cdCmd.Run(cmd, args)
-	},
-	Args: func(cmd *cobra.Command, args []string) error {
-		if len(args) < 1 {
-			return fmt.Errorf("Must provide a repo")
-		}
-		return nil
-	},
 }
 
 func init() {

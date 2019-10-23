@@ -30,8 +30,12 @@ func NewRepoExpander() *RepoExpander {
 }
 
 func (rs *RepoExpander) Explode(input string) (string, string, string) {
-	r := regexp.MustCompile("^(([a-z]+]?://|([a-z]+@))?(?P<short>[^/:]+)[/:])?(?P<org>[^/]+)/(?P<name>[^/\\.]+)")
+	r := regexp.MustCompile("^(([a-z]+]?://|([a-z]+@))?(?P<short>[^/:]+)[/:])?(?P<org>[^/]+)/(?P<name>[^/]+)")
 	matches := utils.ReSubMatchMap(r, input)
+
+	if strings.HasSuffix(matches["name"], ".git") {
+		matches["name"] = matches["name"][0 : len(matches["name"])-4]
+	}
 
 	return matches["short"], matches["org"], matches["name"]
 }

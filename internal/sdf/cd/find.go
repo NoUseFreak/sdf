@@ -2,6 +2,7 @@ package cd
 
 import (
 	"io/ioutil"
+	"os"
 	"path"
 
 	"github.com/sahilm/fuzzy"
@@ -49,6 +50,9 @@ func getProjects(rootDir string) []string {
 }
 
 func readDir(dir string) []string {
+	if info, _ := os.Stat(dir); !info.IsDir() {
+		return []string{}
+	}
 	files, err := ioutil.ReadDir(dir)
 	if err != nil {
 		output.Error(err.Error())

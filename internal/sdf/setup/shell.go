@@ -2,6 +2,7 @@ package setup
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"os"
 	"os/user"
@@ -60,6 +61,10 @@ func writeBashFunc(bashProfile string) {
 	defer f.Close()
 
 	sdfPath := os.Args[0]
+	if strings.Contains(sdfPath, "go-build") {
+		cwd, _ := os.Getwd()
+		sdfPath = fmt.Sprintf("go run %s", path.Join(cwd, "cmd/sdf/main.go"))
+	}
 
 	text := `
 # Do not change this line
