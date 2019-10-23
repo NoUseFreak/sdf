@@ -2,7 +2,6 @@ package setup
 
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"os"
 	"os/user"
@@ -10,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/NoUseFreak/sdf/internal/pkg/output"
+	"github.com/NoUseFreak/sdf/internal/pkg/utils"
 )
 
 func SetupShellFunc() {
@@ -60,15 +60,15 @@ func writeBashFunc(bashProfile string) {
 
 	defer f.Close()
 
-	sdfPath := os.Args[0]
-	if strings.Contains(sdfPath, "go-build") {
-		cwd, _ := os.Getwd()
-		sdfPath = fmt.Sprintf("go run %s", path.Join(cwd, "cmd/sdf/main.go"))
-	}
+	sdfPath := utils.SdfBinaryPath()
 
 	text := `
 # Do not change this line
-func sdf() { $(` + sdfPath + ` "$@") }
+func sdf() { 
+	local sdfFile=$(` + sdfPath + ` _tmpfile)
+	` + sdfPath + ` "$@" > $sdfFile
+	source $sdfFile || echo "Debug info can be found in ${sdfFile}"
+}
 `
 
 	if _, err = f.WriteString(text); err != nil {

@@ -15,6 +15,7 @@ func InitConfig() *Config {
 	viper.SetConfigType("yml")
 	viper.SetDefault("projectdir", "$HOME/src")
 	viper.SetDefault("profile", "main")
+	viper.Set("configdir", "$HOME/.sdf")
 
 	viper.AddConfigPath("$HOME/.sdf")
 	viper.AddConfigPath(".")
@@ -31,10 +32,13 @@ func (c *Config) ReadConfig(configName string) {
 }
 
 func (c *Config) applyInterpolation() {
-	viper.Set(
-		"projectdir",
-		os.ExpandEnv(viper.GetString("projectdir")),
-	)
+	keys := []string{"projectdir", "configdir"}
+	for _, key := range keys {
+		viper.Set(
+			key,
+			os.ExpandEnv(viper.GetString(key)),
+		)
+	}
 }
 
 func userHomeDir() string {
