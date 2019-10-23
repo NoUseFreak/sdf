@@ -1,3 +1,11 @@
 
+
+default: test build
+
+.PHONY: test
 test:
-	go test ./...
+	sh -c "'$(CURDIR)/scripts/test.sh'"
+
+.PHONY: build
+build:
+	sh -c "'$(CURDIR)/scripts/build.sh'"

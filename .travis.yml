@@ -1,0 +1,14 @@
+sudo: required
+language: go
+go:
+- master
+deploy:
+- provider: script
+  script: bash scripts/release.sh
+  on:
+    repo: NoUseFreak/sdf
+    branch: master
+    tags: true
+env:
+  global:
+    secure: o+xupTzE9SHafLfvyOmw3R2MmrzXMFqdyiF2/HxdfgMmC/gZ9xKu1laUQ6YFDB6DNmOc0Cw0NItUk/XDLzRaSbau3YZwj3iYrCH+fF1G+oWe+LOpdQF4x0iJ0jvKPyNfpPZ7CSwN89KxsZwr9Rfxt3LOOpyiJBVcc9AksTYmjJFkJPTQbDNDooHWU9i1or1tS9zv58LPqpCr+Z8gpWFb5TXQd5JRs05/Up+I/XpThyv5hvXCfd0FZH8KMCT5SMkZa9Vg7rbFM3ngIC8T1jPdFvjVxQVreCaUAJIzaTy27DM+x0U61agbQg+ZYkjUBdQUu7YOmZuSZpE3poM26rQP1ejjru78t2j5oQ5uiAwFesgZT2h3AJBdkevF+9y6C0k00ZhInscGXFA/npdFVuyRDDkJTe7yGoRT43GwRkcSPrIjmQOGh3e9lilSFlcx2T9gdieMDnn2EyfCp5+gbONb+wJuslqun7Y5Kh1s/f52kU5GeTGtT06BnK1mYNTegtERl5Z5jtLT1GIwKJWil9e61Nsq6ii/dR6/nCfrXvpheOOxc0mR1qPqjnpd4NgbnTgBGn3wyXiX/HafWxnUs8JOnZotnHxBGWdz4USp45lZhkBXA7rLGNmKE+6o7MKemRtn0DoJepp+z/oI7M4rXfvEbHkZutivvDvjOPSPJDBXUHI=

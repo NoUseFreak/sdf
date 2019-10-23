@@ -1,0 +1,18 @@
+letitgo:
+  name: sdf
+  description: sdf for the lazy developer
+  actions:
+    - type: changelog
+      file: CHANGELOG.md
+
+    - type: githubrelease
+      assets:
+        - ./build/archive/*
+
+    - type: homebrew
+      homepage: https://github.com/NoUseFreak/sdf
+      url: https://github.com/NoUseFreak/sdf/releases/download/{{ .Version }}/darwin_amd64.zip
+      version: "{{ .Version }}"
+      tap:
+        url: git@github.com:NoUseFreak/homebrew-brew.git
+      test: system "#{bin}/{{ .Name }} -h"
