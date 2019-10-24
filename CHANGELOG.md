@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.4 (October 24, 2019)
+
+- Fix exporting vars
+- Add badges
+- Update readme
+
+
 ## 0.1.3 (October 24, 2019)
 
 - Fix ignore
