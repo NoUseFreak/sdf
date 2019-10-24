@@ -12,6 +12,7 @@ func Use(name string) error {
 		return err
 	}
 
+	output.Exec("set -a")
 	var keys []string
 	for _, l := range strings.Split(m.Data, "\n") {
 		parts := strings.Split(l, "=")
