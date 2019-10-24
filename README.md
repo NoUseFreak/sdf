@@ -1,5 +1,11 @@
 # SDF
 
+[![Build status](https://img.shields.io/travis/NoUseFreak/sdf/master?style=flat-square)](https://travis-ci.org/NoUseFreak/sdf)
+[![Release](https://img.shields.io/github/v/release/NoUseFreak/sdf?style=flat-square)](https://github.com/NoUseFreak/sdf/releases)
+[![Maintained](https://img.shields.io/maintenance/yes/2019?style=flat-square)](https://github.com/NoUseFreak/sdf)
+[![License](https://img.shields.io/github/license/NoUseFreak/sdf?style=flat-square)](https://github.com/NoUseFreak/sdf/blob/master/LICENSE)
+[![Coffee](https://img.shields.io/badge/☕️-Buy%20me%20a%20coffee-blue?style=flat-square&color=blueviolet)](https://www.buymeacoffee.com/driesdepeuter)
+
 I wrote `sdf` because I wanted my project structure to be organized. But setting
 this up for every repository, and navigating to the correct directory felt too
 much work. 
