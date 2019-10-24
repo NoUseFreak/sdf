@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 (October 24, 2019)
+
+- Fix path
+
+
 ## 0.1.1 (October 23, 2019)
 
 - Add env
