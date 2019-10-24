@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3 (October 24, 2019)
+
+- Fix ignore
+
+
 ## 0.1.2 (October 24, 2019)
 
 - Fix path
