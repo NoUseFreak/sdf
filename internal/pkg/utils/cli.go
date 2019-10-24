@@ -3,15 +3,20 @@ package utils
 import (
 	"fmt"
 	"os"
+	"os/exec"
 	"path"
 	"strings"
 )
 
 func SdfBinaryPath() string {
-	sdfPath := os.Args[0]
-	if strings.Contains(sdfPath, "go-build") {
+	if strings.Contains(os.Args[0], "go-build") {
 		cwd, _ := os.Getwd()
-		sdfPath = fmt.Sprintf("go run %s", path.Join(cwd, "cmd/sdf/main.go"))
+		return fmt.Sprintf("go run %s", path.Join(cwd, "cmd/sdf/main.go"))
+	}
+
+	sdfPath, err := exec.LookPath(os.Args[0])
+	if err != nil {
+		return os.Args[0]
 	}
 
 	return sdfPath
