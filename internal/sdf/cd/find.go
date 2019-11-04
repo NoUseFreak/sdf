@@ -19,9 +19,6 @@ func Find(name string) (string, error) {
 	if len(results) == 1 {
 		return path.Join(rootDir, results[0].Str), nil
 	}
-	if len(results) == 1 {
-		return results[0].Str, nil
-	}
 
 	// No exect match, searching project namespace
 	ns := viper.GetString("default_namespace")
@@ -33,7 +30,7 @@ func Find(name string) (string, error) {
 	case 0:
 		output.Println("No projects found matching the filter")
 	case 1:
-		return results[0].Str, nil
+		return path.Join(rootDir, results[0].Str), nil
 	default:
 		output.Println("More than 1 match found")
 		for _, match := range results {
