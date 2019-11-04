@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0 (November 4, 2019)
+
+- Publish to gofish
+- Add default cd namespace
+
+
 ## 0.1.4 (October 24, 2019)
 
 - Fix exporting vars
