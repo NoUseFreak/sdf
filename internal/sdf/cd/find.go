@@ -19,6 +19,16 @@ func Find(name string) (string, error) {
 	if len(results) == 1 {
 		return path.Join(rootDir, results[0].Str), nil
 	}
+	if len(results) == 1 {
+		return results[0].Str, nil
+	}
+
+	// No exect match, searching project namespace
+	ns := viper.GetString("default_namespace")
+	if ns != "" {
+		results = fuzzy.Find(ns+"/"+name, projects)
+	}
+
 	switch len(results) {
 	case 0:
 		output.Println("No projects found matching the filter")

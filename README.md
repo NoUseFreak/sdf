@@ -63,5 +63,6 @@ __env__
 After setup, you will have a `~/.sdf/main.yml` file, this contains some settings
 that can tailor the `sdf` commands to your way of working.
 
-- __profile__ Profile name if you want more profiles, default is main
+- __profile__ Profile name if you want more profiles (default: main).
 - __projectdir__ Root of all projects. 
+- __default_namespace__ Default path if cd does not find one match.
