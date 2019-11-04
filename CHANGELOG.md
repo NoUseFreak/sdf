@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1 (November 4, 2019)
+
+- Fix path
+
+
 ## 0.2.0 (November 4, 2019)
 
 - Publish to gofish
