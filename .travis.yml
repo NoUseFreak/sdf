@@ -2,6 +2,8 @@ sudo: required
 language: go
 go:
 - master
+git:
+  depth: false
 deploy:
 - provider: script
   skip_cleanup: true
