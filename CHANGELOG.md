@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 (November 6, 2019)
+
+- Add wdid
+- Add shorts
+- Clone full depth
+
+
 ## 0.2.1 (November 4, 2019)
 
 - Fix path
