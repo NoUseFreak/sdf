@@ -23,6 +23,7 @@ func RegisterShortCommands(cmd *cobra.Command) {
 func createShortCmd(cmd *cobra.Command, s short) {
 	cmd.AddCommand(&cobra.Command{
 		Use:    s.Name,
+		Short:  fmt.Sprintf("Short command for:\n '%s'", s.Cmd),
 		Hidden: true,
 
 		Run: func(cmd *cobra.Command, args []string) {
