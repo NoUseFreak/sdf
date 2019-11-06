@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.1 (November 6, 2019)
+
+- Fix short references
+- Better examples
+- Small env example
+- Fix typo
+- Add short and wdid info
+
+
 ## 0.3.0 (November 6, 2019)
 
 - Add wdid
