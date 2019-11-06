@@ -58,6 +58,28 @@ __env__
 - __rm__ Remove a set
 - __use__ Exports a set to the current session
 
+
+__short__
+
+> Create custom short commands.
+
+- __new__ Create a new short command
+- __list__ List all shorts
+
+```
+sdf short new test "ls /tmp"
+sdf test
+```
+
+__wdid__
+
+> Query all your repositories to see a `what did I do` report.
+
+```bash
+sdf wdid 1 day
+```
+
+
 ## Configuration
 
 After setup, you will have a `~/.sdf/main.yml` file, this contains some settings
