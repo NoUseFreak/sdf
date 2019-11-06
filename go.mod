@@ -3,6 +3,7 @@ module github.com/NoUseFreak/sdf
 go 1.13
 
 require (
+	github.com/NoUseFreak/go-parallel v0.0.0-20190604224018-2ba374bf3cf1
 	github.com/NoUseFreak/go-vembed v0.0.0-20190924200302-0a945ec137cf
 	github.com/logrusorgru/aurora v0.0.0-20191017060258-dc85c304c434
 	github.com/manifoldco/promptui v0.3.2

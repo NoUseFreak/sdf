@@ -1,5 +1,7 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
+github.com/NoUseFreak/go-parallel v0.0.0-20190604224018-2ba374bf3cf1 h1:ikIoLWQxSLM8ij5jTtrwd4G4Nu9URZqpHLjr6rp/pdw=
+github.com/NoUseFreak/go-parallel v0.0.0-20190604224018-2ba374bf3cf1/go.mod h1:SgEeD5hW/Qrgzcq6Xj9sXq+To5azjcbCvljmqxFaXY0=
 github.com/NoUseFreak/go-vembed v0.0.0-20190924200302-0a945ec137cf h1:argkuxjsn06FMziyvpnyWxee4xnY5WUr1iAB+q/foA8=
 github.com/NoUseFreak/go-vembed v0.0.0-20190924200302-0a945ec137cf/go.mod h1:ee+7V391E1PjDDLhzLiqs+NiJbCzoMFro9JUxCHhxM8=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=

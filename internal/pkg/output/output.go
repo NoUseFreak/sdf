@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/logrusorgru/aurora"
+	"github.com/sirupsen/logrus"
 )
 
 func Print(format string, a ...interface{}) {
@@ -28,5 +29,7 @@ func Exec(format string, a ...interface{}) {
 }
 
 func Debug(a ...interface{}) {
-	fmt.Fprintln(os.Stderr, a...)
+	if logrus.IsLevelEnabled(logrus.DebugLevel) {
+		fmt.Fprintln(os.Stderr, a...)
+	}
 }
