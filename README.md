@@ -18,7 +18,7 @@ More lazy development tools are being added as they are needed.
 brew install nousefreak/brew/sdf
 ```
 
-Because `sdf` needsto be able to do some bash magic, it will need to wrapper.
+Because `sdf` needs to be able to do some bash magic, it will need to wrapper.
 Run the following once to complete the installation.
 
 ```bash
