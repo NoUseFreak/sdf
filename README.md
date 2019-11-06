@@ -60,7 +60,9 @@ __env__
 
 ```bash
 sdf env new myproject
+# Will prompt an editor to let you set KEY=value environment variables
 sdf env use myproject
+# Will export any vars defined above.
 ```
 
 __short__
@@ -72,7 +74,9 @@ __short__
 
 ```bash
 sdf short new test "ls /tmp"
+# Will create a short called test
 sdf test
+# Will execute 'ls /tmp'
 ```
 
 __wdid__
