@@ -15,16 +15,20 @@ type short struct {
 }
 
 func RegisterShortCommands(cmd *cobra.Command) {
-	for _, short := range List() {
-		cmd.AddCommand(&cobra.Command{
-			Use:    short.Name,
-			Hidden: true,
-
-			Run: func(cmd *cobra.Command, args []string) {
-				RunShort(short.Name)
-			},
-		})
+	for _, v := range List() {
+		createShortCmd(cmd, v)
 	}
+}
+
+func createShortCmd(cmd *cobra.Command, s short) {
+	cmd.AddCommand(&cobra.Command{
+		Use:    s.Name,
+		Hidden: true,
+
+		Run: func(cmd *cobra.Command, args []string) {
+			RunShort(s.Name)
+		},
+	})
 }
 
 func List() []short {
