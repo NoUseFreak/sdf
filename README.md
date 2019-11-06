@@ -58,6 +58,10 @@ __env__
 - __rm__ Remove a set
 - __use__ Exports a set to the current session
 
+```bash
+sdf env new myproject
+sdf env use myproject
+```
 
 __short__
 
@@ -66,7 +70,7 @@ __short__
 - __new__ Create a new short command
 - __list__ List all shorts
 
-```
+```bash
 sdf short new test "ls /tmp"
 sdf test
 ```
