@@ -12,6 +12,7 @@ import (
 
 	"github.com/NoUseFreak/sdf/internal/pkg/output"
 	"github.com/NoUseFreak/sdf/internal/sdf/config"
+	"github.com/NoUseFreak/sdf/internal/sdf/short"
 )
 
 var rootCmd = &cobra.Command{
@@ -34,6 +35,8 @@ func init() {
 
 	cf := config.InitConfig()
 	cf.ReadConfig(viper.GetString("profile"))
+
+	short.RegisterShortCommands(rootCmd)
 }
 
 func initLogs(out io.Writer, level string) error {

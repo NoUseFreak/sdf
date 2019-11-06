@@ -16,8 +16,7 @@ var setupCmd = &cobra.Command{
 	Use:   "setup",
 	Short: "Set it up",
 	Run: func(cmd *cobra.Command, args []string) {
-		homeCfgDir := setup.CreateHomeDir()
-		setup.CreateConfig(homeCfgDir)
+		setup.SaveConfig()
 		setup.SetupShellFunc()
 
 		output.Print("Completed setting up your %s profile\n", viper.GetString("profile"))

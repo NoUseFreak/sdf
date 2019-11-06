@@ -11,7 +11,11 @@ import (
 	"github.com/NoUseFreak/sdf/internal/pkg/output"
 )
 
-func CreateHomeDir() string {
+func GetConfigFile() string {
+	return path.Join(createHomeDir(), viper.GetString("profile")+".yml")
+}
+
+func createHomeDir() string {
 	usr, err := user.Current()
 	if err != nil {
 		log.Fatal(err)
@@ -23,8 +27,8 @@ func CreateHomeDir() string {
 	return homeCfgDir
 }
 
-func CreateConfig(homeCfgDir string) {
-	err := viper.WriteConfigAs(path.Join(homeCfgDir, viper.GetString("profile")+".yml"))
+func SaveConfig() {
+	err := viper.WriteConfigAs(GetConfigFile())
 	if err != nil {
 		output.Print("%v\n", err)
 	}

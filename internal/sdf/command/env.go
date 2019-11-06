@@ -54,6 +54,7 @@ var envListCmd = &cobra.Command{
 		}
 	},
 }
+
 var envNewCmd = &cobra.Command{
 	Use:     "new",
 	Aliases: []string{"add", "create"},
@@ -77,6 +78,7 @@ var envRemoveCmd = &cobra.Command{
 		}
 	},
 }
+
 var envSaveCmd = &cobra.Command{
 	Use:    "_savetmpfile",
 	Hidden: true,
