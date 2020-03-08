@@ -47,6 +47,7 @@ var envEditCmd = &cobra.Command{
 
 var envListCmd = &cobra.Command{
 	Use:   "list",
+	Aliases: []string{"ls"},
 	Short: "List all available env sets",
 	Run: func(cmd *cobra.Command, args []string) {
 		for _, m := range env.List() {
