@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.2 (March 8, 2020)
+
+- Add env ls alias
+- Bump github.com/spf13/cobra from 0.0.5 to 0.0.6
+- Bump github.com/pkg/errors from 0.8.1 to 0.9.1
+- Bump github.com/spf13/viper from 1.6.1 to 1.6.2
+- Bump github.com/manifoldco/promptui from 0.6.0 to 0.7.0
+- Bump github.com/spf13/viper from 1.5.0 to 1.6.1
+- Bump github.com/manifoldco/promptui from 0.3.2 to 0.6.0
+- Bump github.com/spf13/viper from 1.4.0 to 1.5.0
+- Add short info
+
+
 ## 0.3.1 (November 6, 2019)
 
 - Fix short references
