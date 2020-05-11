@@ -11,7 +11,7 @@ require (
 	github.com/sahilm/fuzzy v0.1.0
 	github.com/sirupsen/logrus v1.6.0
 	github.com/spf13/cobra v0.0.7
-	github.com/spf13/viper v1.6.3
+	github.com/spf13/viper v1.7.0
 	gopkg.in/alecthomas/kingpin.v3-unstable v3.0.0-20180810215634-df19058c872c // indirect
 	gopkg.in/src-d/go-git.v4 v4.13.1
 )
